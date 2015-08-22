@@ -1,0 +1,5 @@
+20150602 08:37:31 root DEBUG    Debugging information
+20150602 08:37:31 root INFO     Informational message
+20150602 08:37:31 root WARNING  config file server.conf not found
+20150602 08:37:31 root ERROR    Error occurred
+20150602 08:37:31 root CRITICAL  error -- shutting down
