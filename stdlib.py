@@ -26,6 +26,7 @@ try:
 
     os.rename(dir, "testdir2")
     shutil.move("testdir2", dir)
+
 except FileExistsError:
     pass
 

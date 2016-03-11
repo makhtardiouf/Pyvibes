@@ -1,8 +1,25 @@
 # $Id$
+import sys
+import random
 
+x = random.random()
+if x < 0 :
+    print (x, " x is negative")
+elif x > 0:
+    print (x, " x is positive")
+
+
+a = ""
 for i in range(5): {
-    print(i)
+   # a = str.format("{} {}", "1", i)
+
+    print (i)
 }
+
+words = ['cat', 'window', 'defenestrate']
+words.sort()
+for w in words:
+    print(w)
 
 print("Range with step: ", list(range(0, 10, 3)))
 
