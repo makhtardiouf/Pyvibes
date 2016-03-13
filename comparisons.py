@@ -1,9 +1,9 @@
 __author__ = 'Makhtar'
-# $Id$
+# $Id: comparisons.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
 
 import sys
 import os
-
+# get fibo.py
 import fibo
 
 # from makhtar import utils
@@ -19,8 +19,8 @@ print("System path:")
 for p in sys.path:
     print(p)
 
-string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
-non_null = string1 or string2 or string3
+s1, s2, s3 = '', 'Trondheim', 'Hammer Dance'
+non_null = s1 or s2 or s3
 print(non_null)
 
 a = 4

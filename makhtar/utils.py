@@ -1,22 +1,22 @@
 __author__ = 'Makhtar'
 '''
 Regroup utility functions, classes, vars
-$Id$
+$Id: utils.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
 '''
 import datetime
 import time
 import sys
 
-def showMsg(msg, a='', b=''):
+def showMsg(msg):
     print("\n", datetime.datetime.now(), msg)
 
 
-def typewrite(s):
+def typewrite(s, sleeptime=0.05):
     for i in range(len(s)):
-        #print(s[i], end='')
         sys.stdout.write(s[i])
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(sleeptime)
 
 
-typewrite("Hello")
+if __name__ == "__main__" :
+    typewrite("Loaded makhtar's module")

@@ -1,7 +1,9 @@
 __author__ = 'makhtar'
 
-# $Id$
+# $Id: sets.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
 # set : unordered collection with no duplicate elements
+# support mathematical operations like union, intersection, difference, and symmetric difference
+
 basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
 print(basket)  # show that duplicates have been removed
 
@@ -10,17 +12,22 @@ print('orange' in basket)  # fast membership testing
 a = set('abracadabra')
 b = set('alacazam')
 print('\n', a)  # unique letters in a
-{'a', 'r', 'b', 'c', 'd'}
+#{'a', 'r', 'b', 'c', 'd'}
+print('\n', b)
 
-print('\n', a - b)  # letters in a but not in b
+print('\n', "a - b", a - b)  # letters in a but not in b
 # {'r', 'd', 'b'}
-print('\n', a | b)  # letters in either a or b
+print('\n', "a | b",  a | b)  # letters in either a or b
 # {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
-print('\n', a & b)  # letters in both a and b
+print('\n', "a & b",  a & b)  # letters in both a and b
 # {'a', 'c'}
-print('\n', a ^ b)  # letters in a or b but not both
+print('\n', "a ^ b",  a ^ b)  # letters in a or b but not both
 
 # Sets comprehension
 
 a = {x for x in 'abracadabra' if x not in 'abc'}
 print('\n', a)
+
+# Empty set
+c = set()
+

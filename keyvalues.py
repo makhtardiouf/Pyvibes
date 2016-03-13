@@ -1,6 +1,6 @@
 __author__ = 'makhtar'
 
-# $Id$
+# $Id: keyvalues.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
 # Dictionaries or “associative memories” or “associative arrays”.
 
 import random
@@ -38,7 +38,7 @@ questions = ['name', 'quest', 'favorite color']
 answers = ['lancelot', 'the holy grail', 'blue']
 
 for q, a in zip(questions, answers):
-    print('What is your {0}?  It is {1}.'.format(q, a))
+    print('What is your {0}?   {1}.'.format(q, str(a).capitalize()))
 
 a = dict(one=1, two=2, three=3)
 b = {'one': 1, 'two': 2, 'three': 3}

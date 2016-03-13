@@ -19,8 +19,7 @@ ans = Confirm("Are you married? ", 2)
 
 if ans:
     print("That's the way to go~")
-
 else:
-    print("What are you waiting for? haha")
+    print("What are you waiting for? huhu")
     
 

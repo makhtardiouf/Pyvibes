@@ -1,6 +1,6 @@
 __author__ = 'makhtar'
 
-# $Id$
+# $Id: format.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
 # Input formatting
 
 import math

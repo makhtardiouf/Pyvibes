@@ -1,11 +1,12 @@
 __author__ = 'Makhtar'
-'''Check if a string is a palindrome'''
+'''Check if a string is a palindrome: reversing it gives the same string'''
 
 import sys
 
 def isPalindrome(s):
     ok = True
-    for i, j in zip(range(len(s)) , range(len(s)-2, 0, -1)):
+    # Double iteration
+    for i, j in zip(range(len(s)) , range(len(s)-1, 0, -1)):
         print("Checking: ", i, j, s[i], s[j])
         if s[i] != s[j]:
             ok = False
@@ -18,12 +19,13 @@ def isPalindrome(s):
     sys.stdout.flush()
 
 
-print("Enter strings to check or q to quit, e.g. anna, ette...: ")
-s = sys.stdin.readline()
+prompt = "\nEnter string or q to quit, e.g. anna, ette...: "
+s = input(prompt)
 
 while s:
-    if s == "q\n":
+    if s in ("q", "quit"):
         break
+
     isPalindrome(s)
-    s = sys.stdin.readline()
+    s = input(prompt)
 
