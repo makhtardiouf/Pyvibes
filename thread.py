@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 import threading, zipfile
 import os

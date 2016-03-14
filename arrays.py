@@ -1,9 +1,8 @@
-__author__ = 'makhtar'
 # Trivial arrays operations
-# $Id: arrays.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
+# $Id: arrays.py, db96579442c0  makhtar $
+from makhtar import utils as ut
 import sys
 import time
-from makhtar import utils as ut
 
 a = ['Mary', 'had', 'a', 'little', 'lamb']
 a.sort()
@@ -33,7 +32,6 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 letters[2:5] = ['C', 'D', 'E']
 print(letters)
 
-# See how to iterate from 'a' to 'g', as in C
 # r = range(g)
 # for i in r:
 #     letters.append(i)
@@ -92,4 +90,4 @@ for i in range(len(rows)):
     ut.typewrite("\nSum row: {0:d}\n".format(sum(rows[i])))
     ut.typewrite("\nSum col: {:d}".format(sumCol))
 
-print(rows)
+ut.logit(rows)

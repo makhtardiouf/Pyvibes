@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 
 # https://docs.python.org/3/tutorial/controlflow.html

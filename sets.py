@@ -1,6 +1,6 @@
-__author__ = 'makhtar'
 
-# $Id: sets.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
+
+# $Id: sets.py, db96579442c0  makhtar $
 # set : unordered collection with no duplicate elements
 # support mathematical operations like union, intersection, difference, and symmetric difference
 

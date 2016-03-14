@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 
 ##### pip install yahoo_finance,

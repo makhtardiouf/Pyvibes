@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 import os, sys
 import numpy as np

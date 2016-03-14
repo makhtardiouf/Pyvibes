@@ -1,6 +1,6 @@
-__author__ = 'makhtar'
 
-# $Id$
+
+# $Id: tryexcept.py, db96579442c0  makhtar $
 # Exception handling
 
 import sys

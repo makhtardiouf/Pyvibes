@@ -1,8 +1,9 @@
 __author__ = 'Makhtar'
 """
-Demo formatting I/O
-$Id$
+Demo trivial I/O formatting
+$Id: iodemo.py, db96579442c0  makhtar $
 """
+from makhtar import utils as ut
 
 x = int(input("Please enter an integer: "))
 
@@ -27,5 +28,7 @@ y = 200 * 200
 s = 'The value of x is ' + repr(x) + ', and y is ' + repr(y) + '...'
 print(s)
 
-# The argument to repr() may be any Python object:
+# The argument of repr() may be any Python object:
 print(repr((x, y, ('spam', 'eggs'))))
+
+ut.logit("Done running {}".format(sys.argv[0]));

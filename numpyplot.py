@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 import numpy as np
 from matplotlib import pyplot as plt

@@ -1,5 +1,5 @@
-__author__ = 'makhtar'
-#$Id$
+
+#$Id: lists.py, db96579442c0  makhtar $
 # https://docs.python.org/3.3/tutorial/datastructures.html
 a = [66.25, 333, 333, 1, 1234.5]
 

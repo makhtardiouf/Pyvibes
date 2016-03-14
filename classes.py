@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 '''
 Demo for Classes, simulating pseudo stock market operations
 

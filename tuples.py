@@ -1,6 +1,6 @@
-__author__ = 'makhtar'
 
-# $Id: tuples.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
+
+# $Id: tuples.py, db96579442c0  makhtar $
 __doc__
 '''another standard sequence data type: the tuple; is immutable
   Consists of a number of values separated by commas.

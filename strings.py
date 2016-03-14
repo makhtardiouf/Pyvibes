@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 # Trivial strings operations
 
 s = "hello python world"

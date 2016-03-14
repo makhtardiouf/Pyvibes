@@ -1,4 +1,4 @@
-__author__ = 'makhtar'
+
 
 def scope_test():
     def do_local():
