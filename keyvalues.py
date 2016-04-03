@@ -1,6 +1,6 @@
 
 
-# $Id: keyvalues.py, db96579442c0  makhtar $
+# $Id: keyvalues.py, c86448423bdc  makhtar $
 # Dictionaries or “associative memories” or “associative arrays”.
 
 import random

@@ -1,7 +1,7 @@
 __author__ = 'Makhtar'
 """
 Demo trivial I/O formatting
-$Id: iodemo.py, db96579442c0  makhtar $
+$Id: iodemo.py, c86448423bdc  makhtar $
 """
 from makhtar import utils as ut
 

@@ -1,6 +1,6 @@
 
 
-# $Id: format.py, db96579442c0  makhtar $
+# $Id: format.py, c86448423bdc  makhtar $
 # Input formatting
 
 import math

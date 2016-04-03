@@ -10,7 +10,7 @@ try:
 
     with urllib.request.urlopen('http://www.google.com/?search=makhtar') as response:
         for line in response:
-           # line = line.decode('utf-8')  # Decoding the binary data to text.
+            line = line.decode('utf-8')  # Decoding the binary data to text.
            # if 'EST' in line or 'EDT' in line:  # look for Eastern Time
             print(line)
 

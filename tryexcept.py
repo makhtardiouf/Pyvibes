@@ -1,6 +1,6 @@
 
 
-# $Id: tryexcept.py, db96579442c0  makhtar $
+# $Id: tryexcept.py, c86448423bdc  makhtar $
 # Exception handling
 
 import sys

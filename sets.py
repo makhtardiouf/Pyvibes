@@ -1,6 +1,6 @@
 
 
-# $Id: sets.py, db96579442c0  makhtar $
+# $Id: sets.py, c86448423bdc  makhtar $
 # set : unordered collection with no duplicate elements
 # support mathematical operations like union, intersection, difference, and symmetric difference
 

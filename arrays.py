@@ -1,5 +1,5 @@
 # Trivial arrays operations
-# $Id: arrays.py, db96579442c0  makhtar $
+# $Id: arrays.py, c86448423bdc  makhtar $
 from makhtar import utils as ut
 import sys
 import time

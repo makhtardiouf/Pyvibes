@@ -1,7 +1,7 @@
 
 # Dictionnaries = “associative arrays”, indexed by keys,
 # https://docs.python.org/3.4/tutorial/datastructures.html
-# $Id: dict.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
+# $Id: dict.py, c86448423bdc  makhtar $
 import datetime as dt
 
 contact = {"name": "Makhtar", "last_name": "Diouf", "tel": +12145672, "address": "Galsene sur scene",

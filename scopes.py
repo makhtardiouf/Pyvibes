@@ -1,4 +1,5 @@
 
+# https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces
 
 def scope_test():
     def do_local():

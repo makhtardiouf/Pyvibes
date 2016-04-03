@@ -1,4 +1,4 @@
-
+# $Id: classes.py, ba755c6924d3  makhtar $
 '''
 Demo for Classes, simulating pseudo stock market operations
 
@@ -34,7 +34,7 @@ class Stockbis(Stock):
         print("OOP magic inherited class from Stock")
         Stock.__init__(self)
 
-    def list_stock(self):
+    def listStock(self):
         Stock.show(self)
 
 
@@ -52,7 +52,8 @@ myStock.show()
 stockB = Stockbis()
 #stockB.shares =
 print( myStock.shares.reverse())
-stockB.list_stock()
+stockB.listStock()
 
 print(isinstance(myStock, Stock))
 print(isinstance(stockB, Stock))
+print(issubclass(stockB, Stock))

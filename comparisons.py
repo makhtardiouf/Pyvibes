@@ -1,5 +1,5 @@
 __author__ = 'Makhtar'
-# $Id: comparisons.py, 1b4d9138d63b 1457879538.0-32400 makhtar $
+# $Id: comparisons.py, c86448423bdc  makhtar $
 
 import sys
 import os

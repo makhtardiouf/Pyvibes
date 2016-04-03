@@ -1,6 +1,6 @@
 
 
-# $Id: tuples.py, db96579442c0  makhtar $
+# $Id: tuples.py, c86448423bdc  makhtar $
 __doc__
 '''another standard sequence data type: the tuple; is immutable
   Consists of a number of values separated by commas.

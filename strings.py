@@ -1,4 +1,4 @@
-
+# $Id: strings.py, fdbfe3d97370  makhtar $
 # Trivial strings operations
 
 s = "hello python world"
@@ -22,8 +22,3 @@ r = [x.capitalize() for x in r]
 # Rebuild the string
 s = ' '.join(r)
 print(s)
-
-
-#Python strings cannot be changed — they are immutable.
-#s[0] = 'J'  # error
-

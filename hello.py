@@ -1,29 +1,33 @@
-# $Id$
+# $Id: hello.py, ba755c6924d3  makhtar $
 
 import sys
-import time
+import datetime as dt
 from time import sleep
 
-print(str.capitalize("hello python, it's ") + str(time.localtime()))
-print("argv[0]= " + sys.argv[0])
+today = dt.date.today()
+print(str.capitalize("hello python, today is") , 
+      dt.datetime.strftime(today, "%A, %B %d, %Y"))
+      
+print("Running argv[0]: " + sys.argv[0])
 
-mesg = "Programming is good"
-print(mesg, len(mesg))
+msg = "Programming is just logic"
+print(msg, len(msg))
 
-words = ['cat', 'window', 'defenestrate']
+words = ['monster', 'window', 'appear']
 for w in words:
-    print(w, len(w))
+    print(w, w.__class__, len(w))
 
 print("Raw string: " + r'C:\some\name')
 
 i = 0
-while i < len(mesg):
-    print(mesg[i], end=' ')
-    sleep(0.5)
-    i = i + 1
+while i < len(msg):
+    print(msg[i], end=' ')
+    sleep(0.05)
+    i += 1
 
 for w in words[:]:  # Loop over a slice copy of the entire list.
     if len(w) > 6:
         words.insert(0, w)
 
-print(words)
+print("\n", words, words.__class__)
+print(isinstance(words, str), isinstance(words, list))
