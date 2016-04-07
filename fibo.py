@@ -1,6 +1,6 @@
-__author__ = 'Makhtar'
-__name__ = 'Test fibonacci demoing modularisation'
+# $Id: fibo.py, 6a8319e303c1  makhtar $
 # Module example Fibonacci numbers
+__name__ = 'Test fibonacci demoing modularisation'
 
 def fib(n):  # write Fibonacci series up to n
     a, b = 0, 1

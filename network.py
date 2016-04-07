@@ -16,9 +16,9 @@ try:
 
     server = smtplib.SMTP('localhost')
     src = "makhtar@softensys.com"
-    dest = 'elmakdi@gmail.com'
+    dest = 'makhtar.diouf@gmail.com'
     server.sendmail(src, dest,
-                    """To: elmakdi@gmail.com
+                    """To: makhtar.diouf@gmail.com
                     From: makhtar@softensys.com
 
                     Hello, from Python. Remember that programming is your best bet!

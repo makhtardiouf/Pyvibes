@@ -3,7 +3,7 @@
 Created on Sun Mar 20 16:49:28 2016
 Method overloading: mangles identifiers starting with "__"
 https://docs.python.org/3.4/tutorial/classes.html
-$Id: class_overload.py, ba755c6924d3  makhtar $
+$Id: cloverload.py, 6a8319e303c1  makhtar $
 """
 import random
 

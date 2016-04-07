@@ -18,6 +18,7 @@ SL-CommConfig-r12 ::= 				SEQUENCE	{
 		}
 	}																		OPTIONAL,	-- Need ON
 	...,
+
 	[[	scheduled-r13x0						CHOICE {
 			release								NULL,
 			setup								SEQUENCE {
