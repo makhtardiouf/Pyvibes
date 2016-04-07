@@ -1,7 +1,7 @@
 __author__ = 'Makhtar'
 """
 Regroup utility functions, classes, vars
-$Id: utils.py, 61514a10e198  makhtar $
+$Id: utils.py, 0e68eb7c9c36  makhtar $
 If compiled, make sure utils.so is not in the same directory as utils.py
 """
 import datetime
@@ -32,14 +32,14 @@ def logit(msg):
 def do_cprofile(func):
     """Add @utils.do_cprofile just before the target function definition"""
     def profiled_func(*args, **kwargs):
-        profile = cProfile.Profile()
+        prof = cProfile.Profile()
         try:
-            profile.enable()
+            prof.enable()
             result = func(*args, **kwargs)
-            profile.disable()
+            prof.disable()
             return result
         finally:
-            profile.print_stats()
+            prof.print_stats()
     return profiled_func
 
 if __name__ == "__main__" :

@@ -1,0 +1,36 @@
+SL-CommConfig-r12 ::= 				SEQUENCE	{
+	commTxResources-r12					CHOICE {
+		release								NULL,
+		setup								CHOICE {
+			scheduled-r12					SEQUENCE {
+				sl-RNTI-r12						C-RNTI,
+				mac-MainConfig-r12				MAC-MainConfigSL-r12,
+				sc-CommTxConfig-r12				SL-CommResourcePool-r12,
+				mcs-r12							INTEGER (0..28) 				OPTIONAL	-- Need OP
+			},
+			ue-Selected-r12					SEQUENCE {
+				-- Pool for normal usage
+				commTxPoolNormalDedicated-r12	SEQUENCE {
+					poolToReleaseList-r12			SL-TxPoolToReleaseList-r12 OPTIONAL,	-- Need ON
+					poolToAddModList-r12			SL-CommTxPoolToAddModList-r12 OPTIONAL	-- Need ON
+				}
+			}
+		}
+	}																		OPTIONAL,	-- Need ON
+	...,
+	[[	scheduled-r13x0						CHOICE {
+			release								NULL,
+			setup								SEQUENCE {
+				logicalChGroupInfoList-r13			LogicalChGroupInfoList-r13,
+				multipleTxAllowed-r13				BOOLEAN
+			}
+		}																	OPTIONAL,	-- Need ON
+		ue-Selected-r13x0					SEQUENCE {
+			commTxPoolNormalDedicatedExt-r13	SEQUENCE {
+				poolToReleaseListExt-r13			SL-TxPoolToReleaseListExt-r13 OPTIONAL,	-- Need ON
+				poolToAddModListExt-r13				SL-CommTxPoolToAddModListExt-r13	OPTIONAL	-- Need ON
+			}
+		}																OPTIONAL,	-- Need ON
+		commTxAllowRelayDedicated-r13		BOOLEAN			OPTIONAL	-- Need ON
+	]]}
+	

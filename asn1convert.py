@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Parse a file containing ASN1 pseudo-code and prep it for conversion to C++
+Parse a file containing ASN1 pseudo-code and prep it for C++ conversion
 $Id: asn1convert.py, ca5aafa57b53  makhtar $
 """
 import sys
@@ -9,10 +9,10 @@ import re
 
 __author__ = "Makhtar Diouf"
 
-inp = ""
+inp = ''
 if len(sys.argv) < 2:
-    # input("Specify as parameter the ASN file to convert: ")
-    inp = "TempAsn.txt"
+    # input("Specify the ASN file to convert: ")
+    inp = "asn1test.txt"
 else:
     inp = sys.argv[1]
 
@@ -25,52 +25,75 @@ opts = {
     "CHOICE": " enum ",
     "BOOLEAN": " bool ",
     "INTEGER": " int ",
-    "OPTIONAL": " \t// Opt",
-    "Need ON": ' ',
-    "Need OP": ' ',
-    "...": " \n",
-    "[[":  " \n",
-    "]]":  " \n",
-    "::=": ' ',
+    "OPTIONAL": '',
+    "Need ON": " ",
+    "Need OP": " ",
+    "NULL": '',
+    "...,": "\n\n",
+    "[[": " \n",
+    "]]": " \n",
+    "::=": " ",
+    "--": " // ",
     "-": '',
     ",": '',
-    "\t": ' '
+    "\t": " "
 }
 
-i = 20
-while i > 0:
+try:
+    line = fp.readline()
+    outp = open(fp.name + ".h", "w")
+    dest = ""
+    while (line != ''):
+        # if not line: break
+        tmp = line.split("\t")
+        parts = [str(_).strip() for _ in tmp]
+        line = ''
+        for s in reversed(parts):
+            s = s.strip()
+            if (s == " ") or (s == "\t"):
+                continue
+            line += s + " "
 
-    tmp = str(fp.readline()).split('\t')
-    parts = [str(_).strip() for _ in tmp]
-    line = ""
-    for s in reversed(parts):
-        if (s == ' ') or (s == '\t'):
-            continue
-        line += s + " "
+        d1 = False
+        d2 = False
+        d3 = False  # struct in previous line
+        EOL = "; "
+        for k in opts:
+            if k not in line:
+                continue
 
-    d1 = False
-    d2 = False
+            if "{" in line:
+                d1 = True
+                line = re.sub("{", " ", line)
+            elif "}" in line:
+                d2 = True
+            elif "struct" in line:
+                d3 = True
+                #EOL = ";"
+
+            line = re.sub(k, opts[k], line) + " "
+
+        if d1:
+            line = str(line) + " { "
+
+        elif d2:           
+            line = "\t" + str(line) + " "
+
+        elif "}" not in line:
+            line = "\t typedef " + str(line) + EOL
+
+        else:
+            line = "\t}"
+            if d3:
+                line += ";"
+
+        outp.write(line + "\n")
+        line = fp.readline()
+
+except Exception:
+    print("Aborting, regex error ", sys.exc_info()[0])
     
-    for k in opts:
-        if k not in line:
-            continue
-        
-        if "{" in line:
-            d1 = True
-            line = re.sub("{", ' ', line) + " "
-        elif "}" in line:
-            d2 = True
-            
-        line = re.sub(k, opts[k], line) + " "
-        
-    if d1:
-        sys.stdout.write("\t " + str(line) + " { ")
-    elif d2:
-        sys.stdout.write("\t" + str(line) + ", ")       
-    else:
-        sys.stdout.write("\t typedef " + str(line) + ", ")
-
-    print()
-    i -= 1
-
-fp.close()
+finally:
+    fp.close()
+    outp.close()
+    print("See output file: ", outp.name)
