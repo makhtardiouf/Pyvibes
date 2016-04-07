@@ -1,5 +1,5 @@
-"""$Id: tetrismod.py, 940b2970a63f  makhtar $
-Module implemented as a simple command-line Tetris game"""
+"""$Id: tetrismod.py, 8c507338968c  makhtar $
+Module for a simple command-line Tetris game, with a nontrivial implementation"""
 import sys
 from random import choice, randint
 
@@ -79,7 +79,7 @@ class Tetris:
         self.board = [["*"] * self.nRows for j in range(cols)]
         self.pieces_list = []
         self.kopts = {'a': "move left", 'd': "move right",
-                      'w': "rotate left ->>", 's': "rotate right (clockwise <<-)"}
+                      'w': "rotate left ->>", 's': "rotate right = clockwise <<-"}
 
         # Pieces shapes
         type1 = [[1, 1, 1, 1]]
@@ -226,8 +226,7 @@ class Tetris:
         return True
 
     def can_rotate_left(self, piece):
-        """Check if not overlapping on target destination"""
-        # Doesn't modify the original block here
+        """Check if not overlapping on target destination"""       
         return self.can_move_right(piece) and self.can_move_down(piece)
 
     def can_rotate_right(self, piece):

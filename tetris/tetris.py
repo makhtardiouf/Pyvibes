@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""$Id: tetris.py, 940b2970a63f  makhtar $
- Simple command-line Tetris game, implemented in a single file for simplicity.
+"""$Id: tetris.py, 8c507338968c  makhtar $
+ Simple command-line Tetris game
 
  Usage: python3 tetris.py
  Quick autotest: python3 tetris.py < tetris-input.txt
@@ -11,10 +10,7 @@ from tetrismod import *
 #from makhtar import utils
 
 __author__ = "Makhtar Diouf <makhtar.diouf@gmail.com>"
-#dbgon = dbgon
 
-
-# ****** *******
 #@utils.do_cprofile
 def run_game_loop():
     """ Run the game """
@@ -81,7 +77,7 @@ def run_game_loop():
         elif piece.y == 0:
             print("\n\t*** Game over~")
             # Avoid abrupt closure on windows
-            input("Press any key to exit")
+            input("Press any key to exit\n")
             exit()
 
         else:
