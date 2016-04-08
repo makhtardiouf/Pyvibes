@@ -1,0 +1,16 @@
+typedef typedef;
+typedef CRNTI;
+typedef MACMainConfigSLr12;
+typedef SLCommResourcePoolr12;
+typedef ;
+typedef SLTxPoolToReleaseListr12;
+typedef SLCommTxPoolToAddModListr12;
+typedef };
+typedef };
+typedef };
+typedef typedef;
+typedef LogicalChGroupInfoListr13;
+typedef };
+typedef SLTxPoolToReleaseListExtr13;
+typedef ;
+typedef };
