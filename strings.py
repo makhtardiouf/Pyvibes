@@ -1,9 +1,10 @@
 # $Id: strings.py, fdbfe3d97370  makhtar $
 # Trivial strings operations
 
-s = "hello python world"
+s = "hellopython world"
 
-# slice
+# slices
+print(s[:5])
 print(s[5:12])
 
 print(3*s, " ")

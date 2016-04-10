@@ -1,3 +1,5 @@
+-- ASN1START
+
 SL-CommConfig-r12 ::= 				SEQUENCE	{
 	commTxResources-r12					CHOICE {
 		release								NULL,
@@ -34,4 +36,5 @@ SL-CommConfig-r12 ::= 				SEQUENCE	{
 		}																OPTIONAL,	-- Need ON
 		commTxAllowRelayDedicated-r13		BOOLEAN			OPTIONAL	-- Need ON
 	]]}
-	
+
+-- ASN1STOP	

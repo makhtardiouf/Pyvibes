@@ -1,0 +1,127 @@
+#!/usr/bin/env python3
+# Codejam 20160408
+# Makhtar Diouf
+# $Id$
+# Problem B:
+
+import sys
+
+class Cake:
+    def __init__(self, chs):
+        # min number of time to maneuver
+        self.y = 0
+        self.S = list(chs)
+        self.N = len(self.S)
+        self.ref = self.N
+        self.checkref()
+        self.it1 = True
+        
+        self.bin = []
+        for ch in self.S:
+            if ch == '-':
+                self.bin.append(0)
+            else:
+                self.bin.append(1)
+                
+
+    def checkref(self):
+        # Determine the ref first = 1st - after +
+        #self.ref = self.N
+        #return
+        ######
+        hit = False
+        try:
+            self.ref = 1
+            for i in range(1, self.N):
+                # Detect the last '-'
+                if (self.S[i] == '-'):
+                    self.ref = i
+                    if i > 1:
+                        break
+
+        except IndexError:
+            return
+
+    def countflip(self, stack):
+        self.y = 0
+        last = stack[0]
+        for ch in stack:
+            if ch == last:
+                continue
+            
+            self.y += 1
+            last = ch
+
+        if last == 0:
+            self.y += 1
+         
+        return self.y
+    
+
+    def flip(self):
+        # Flip all chacters
+        flipped = False
+
+        for i in range(0, self.ref):
+            if self.S[i] == '-':
+                self.S[i] = '+'
+                flipped = True
+
+            elif ( '-' in self.S[i:self.ref]):
+                #if (self.ref == 1) or (i+1 < self.ref):
+                    self.S[i] = '-'
+                    flipped = True
+
+        if flipped:
+            self.y += 1
+
+        s = self.S[:self.ref]
+        s.reverse()
+        self.S[:self.ref] = s
+        self.it1 = False
+            
+        print("Ref:", self.ref, ", y:", self.y, ", S:", self.S, ", s:", s)
+        #if self.it1:
+        self.checkref()
+        return self.y
+
+
+def solve(S):
+    if '-' not in S:
+        return 0
+
+    c = Cake(S)
+    c.countflip(c.bin)
+    #while (c.S != None) and (c.y < c.N):
+        #c.flip()
+        #if '-' not in c.S[:c.ref]:
+        #    return c.y
+    return c.y
+
+
+
+#### main
+try:
+    file = "b-test.in" #"B-small.in" #
+    inp = open(file)
+    outp = open(inp.name + ".out", mode='w')
+
+    nCases = int(inp.readline().strip())
+    print(nCases, " test cases")
+
+    for k in range(1, nCases + 1):
+        S = inp.readline().strip()
+        print("S:", S)
+
+        line = "Case #{}{}{}\n".format(k, ': ', solve(S))
+        sys.stdout.write(line)
+        outp.write(line)
+
+except Exception as ex:
+    print("Error: ", sys.exc_info()[0], ex)
+    raise
+
+finally:
+    inp.close()
+    outp.close()
+

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Parse a file containing ASN1 pseudo-code and prep it for C++ conversion.
-Formats the output file with 'astyle'
-$Id: asn1convert.py, 6a8319e303c1  makhtar $
+Parse a file containing ASN1 pseudo-code and prep it for C++ conversion. Shares some similarities with asn1c, but this version focus on the latest 3GPP TS docs extraction.
+
+Formats the output file with 'astyle'.
+$Id: asn1convert.py, 9ddcffa7b4df  makhtar $
 """
 import sys
 import os
@@ -24,106 +25,122 @@ print("Reading file ", fp.name)
 opts = {
     "SEQUENCE": " struct ",
     "CHOICE": " enum ",
+    "ENUMERATED": " enum ",
     "BOOLEAN": " bool ",
     "INTE": " int ",
+    "STRING": " string ",
     "OPTIONAL": '',
     "Need ON": " ",
     "Need OP": " ",
-    "NULL": '',
+    "NULL": 'typedef ',
     "...": "\n\n",
     "[[": " \n",
     "]]": " \n",
     "::=": " ",
     #"--": " // ",
     "-": '',
-    ",": '',
+    ",": ' ',
     "\t": ''
 }
 
 try:
     line = fp.readline()
     outp = open(fp.name + ".h", "w")
-    inAsn = False
-    while (line != ''):
+    # Foward declarations header file
+    outp2 = open(fp.name + "_typedefs.h", "w")
+    outp.write('#include "' + outp2.name + '"\n')
 
-        # Is it a comment line
-        cmt = re.match(re.escape("--"), line.strip())
-        if cmt or (not inAsn):
-            line = "// " + line.strip()
-            outp.write(line + "\n")
+    typedef_list = []
+    inAsn = False
+
+    def checkAsn(_line):
+        global inAsn
+        global line
+        if "ASN1START" in _line:
+            inAsn = True
+            outp.write("// " + _line.strip() + "\n")
             line = fp.readline()
 
-            if "ASN1START" in line:
-                inAsn = True
-                line = fp.readline()
-            else:
-                continue
-
-        if "ASN1STOP" in line:
+        elif "ASN1STOP" in _line:
             inAsn = False
+        return inAsn
+
+    while line != '':
+        inAsn = checkAsn(line)
+        if not inAsn:
+            # Comment out non-ASN text
+            outp.write("// " + line.strip() + "\n")
             line = fp.readline()
             continue
 
-        elif inAsn:
-            tmp = line.split("\t")
-            parts = [str(_).strip() for _ in tmp]
-            line = ''
-            skip = False
-            for s in reversed(parts):
-                s = s.strip()
-                if (s == " ") or (s == "\t"):
-                    continue
-                if  (')' not in s):
-                    line += s + " "
-                else:
-                    # e.g. INTEGER (0..28)
-                    line += (s[:4]) + " "
+        tmp = line.split("\t")
+        parts = [str(_).strip() for _ in tmp]
+        del(tmp)
+        line = ''
 
-            d1 = False
-            d2 = False
-            d3 = False  # struct in previous line
-            EOL = "; "
-            for k in opts:
-                if k not in line:
-                    continue
+        for s in reversed(parts):
+            s = s.strip()
+            if s.isspace():
+                continue
+            elif ('(' not in s):
+                line += s.strip() + " "
+            else:
+                # e.g. INTEGER (0..28)
+                line += (s[:4]) + " "
 
-                if "{" in line:
-                    d1 = True
-                    line = re.sub("{", " ", line)
-                elif "}" in line:
-                    d2 = True
-                elif "struct" in line:
-                    d3 = True
-                    #EOL = ";"
+        d1 = False
+        d2 = False
+        d3 = False  # struct in previous line
 
-                line = re.sub(re.escape(k), opts[k], line.strip())
-
-        if d1:
+        if "{" in line:
+            d1 = True
+            line = re.sub("{", " ", line)
             line = str(line) + " {"
 
-        elif d2:
+        elif "}" in line:
+            d2 = True
+            line = "\t" + str(line)
+        elif "struct" in line:
+            d3 = True
             line = "\t" + str(line)
 
-        elif (not d2) and (not line.isspace()):
-            if "bool" not in line:
-                line = "\t typedef " + str(line) + EOL
-            else:
-                line = "\t" + str(line) + EOL
+        # Replace items present in the symbols table
+        for k in opts:
+            if k not in line:
+                continue
+            line = re.sub(re.escape(k), opts[k], line.strip())
 
+        if not line.isspace():
+            if ("bool" not in line) and ("int" not in line):
+                s = line.split(' ')
+                d = d1 or d2 or d3
+                i = 0
+                typed = s[i]
+                while typed.isspace():
+                    typed = s[i]
+                    i += 1
+
+                if (not d) and not (typed == "typedef"):
+                    typedef_list.append(typed)
+                del(s)
+
+        if d1:
+            outp.write("\t" + line + "\n")
         else:
-            line = "\t}"
-            if d3:
-                line += ";"
-
-        outp.write(line + "\n")
+            outp.write("\t" + line + ";\n")
         line = fp.readline()
 
 except Exception:
     print("Aborting, regex error ", sys.exc_info()[0])
-    #raise
+    # raise
 
 finally:
     fp.close()
-    outp.close()
-    os.system("astyle " + outp.name)
+    os.system("astyle --style=gnu " + outp.name)
     print("See output file: ", outp.name)
+
+    outp2.write("\n// Forward declarations for " + outp.name)
+    outp.close()
+    for s in typedef_list:
+        outp2.write("\ntypedef " + s + ";")
+    outp2.close()
