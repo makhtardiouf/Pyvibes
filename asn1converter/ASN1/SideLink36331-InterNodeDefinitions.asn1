@@ -1,0 +1,41 @@
+
+The AS-Config IE contains information about RRC configuration information in the source eNB which can be utilized by target eNB to determine the need to change the RRC configuration during the handover preparation phase. The information can also be used after the handover is successfully performed or during the RRC connection re-establishment.
+AS-Config information element
+-- ASN1START
+
+AS-Config ::=				SEQUENCE {
+	sourceMeasConfig					MeasConfig,
+	sourceRadioResourceConfig			RadioResourceConfigDedicated,
+	sourceSecurityAlgorithmConfig		SecurityAlgorithmConfig,
+	sourceUE-Identity					C-RNTI,
+	sourceMasterInformationBlock		MasterInformationBlock,
+	sourceSystemInformationBlockType1	SystemInformationBlockType1(WITH COMPONENTS
+											{..., nonCriticalExtension ABSENT}),
+	sourceSystemInformationBlockType2	SystemInformationBlockType2,
+	antennaInfoCommon					AntennaInfoCommon,
+	sourceDl-CarrierFreq				ARFCN-ValueEUTRA,
+	...,
+	[[	sourceSystemInformationBlockType1Ext	OCTET STRING (CONTAINING
+												SystemInformationBlockType1-v890-IEs)	OPTIONAL,
+		sourceOtherConfig-r9				OtherConfig-r9
+	-- sourceOtherConfig-r9 should have been optional. A target eNB compliant with this transfer
+	-- syntax should support receiving an AS-Config not including this extension addition group
+	-- e.g. from a legacy source eNB
+	]],
+	[[	sourceSCellConfigList-r10			SCellToAddModList-r10			OPTIONAL
+	]],
+	[[	sourceConfigSCG-r12					SCG-Config-r12		OPTIONAL
+	]]
+}
+
+
+AS-Config-v1250 ::=				SEQUENCE {
+	sourceWlan-OffloadConfig-r12		WLAN-OffloadConfig-r12				OPTIONAL,
+	sourceSL-CommConfig-r12				SL-CommConfig-r12					OPTIONAL,
+	sourceSL-DiscConfig-r12				SL-DiscConfig-r12					OPTIONAL
+}
+
+
+-- ASN1STOP
+NOTE:	The AS-Config re-uses information elements primarily created to cover the radio interface signalling requirements. Consequently, the information elements may include some parameters that are not relevant for the target eNB e.g. the SFN as included in the MasterInformationBlock.
+

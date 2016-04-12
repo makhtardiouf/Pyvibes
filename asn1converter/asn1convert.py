@@ -27,7 +27,7 @@ print("Reading file ", inp.name)
 # Symbols table
 opts = {
     "SEQUENCE": " struct ",
-    "CHOICE": " enum ",
+    "CHOICE": " enum ", # verify
     "ENUMERATED": " enum ",
     "BOOLEAN": " bool ",
     "BIT": "std::bitset<1>",
@@ -106,6 +106,7 @@ try:
             d1 = True
             if 'ENUMERATE' in line:
                 opts[','] = ','
+
             # Handle long enums, and structs
             tmp = line.split("{")
             line = tmp[0]
@@ -155,7 +156,7 @@ try:
 
 except Exception:
     print("Aborting, regex error ", sys.exc_info()[0])
-    raise
+    #raise
 
 finally:
     inp.close()
@@ -163,14 +164,15 @@ finally:
     print("See output files: ", outp.name, outp2.name)
 
     outp2.write("\n\n// Forward declarations for " + outp.name)
+    outp2.write("\n// Author: " + __author__)
     outp.close()
+
     for s in typedef_list:
-        # print(s, s.isalnum(), s.isspace())
-        # if s.isalnum():
-            outp2.write("\ntypedef " + s + ";")
+        outp2.write("\ntypedef " + s + ";")
 
     # Remove empty typedefs
     outp2.close()
     os.system("sed -i 's/typedef ;/ /g' " + outp2.name)
+    os.system("sed -i 's/     / /g' " + outp2.name)
     print(len(typedef_list), " typedefs generated. Check if any are missing")
     
