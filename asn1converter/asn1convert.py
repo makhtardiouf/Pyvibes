@@ -12,7 +12,7 @@ import sys
 import os
 import re
 
-__author__ = "Makhtar Diouf"
+__author__ = "Adhoc ASN1 converter, by Makhtar Diouf"
 
 infile = ''
 if len(sys.argv) < 2:
@@ -30,30 +30,36 @@ opts = {
     "CHOICE": " enum ", # verify
     "ENUMERATED": " enum ",
     "BOOLEAN": " bool ",
+    #"BIT STRING": "std::bitset",
     "BIT": "std::bitset<1>",
     "INTE": " int ",
+    "OCTE": " char ",
     "STRING": " string ",
     "OPTIONAL": '',
-    "Need ON": " ",
-    "Need OP": " ",
+    "Need ON": ' ',
+    "Need OP": ' ',
     "NULL": 'typedef ',
     "END": '// END',
-    "...": "\n\n",
+    "r12": '_r12',
+    "r13": '_r13',
+    "...": "\n",
     "[[": " \n",
     "]]": " \n",
     "::=": " ",
     "--": " // ",
     "-": '',
-    ",": ' ',
+    #",": ' ',
     "\t": ''
 }
 
 try:
     line = inp.readline()
+    lnum = 0
     outp = open(inp.name + ".h", "w")
     # Foward declarations header file
     outp2 = open(inp.name + "_typedefs.h", "w")
-    outp.write('#include "' + outp2.name + '"\n')
+    outp.write("\n// Note: " + __author__)
+    outp.write('\n#include "' + outp2.name + '"\n')
 
     typedef_list = []
     inAsn = False
@@ -70,8 +76,8 @@ try:
             inAsn = False
         return inAsn
 
-    #d1 = False
     while line != '':
+        lnum += 1
         inAsn = checkAsn(line)
         if not inAsn:
             # Comment out non-ASN text
@@ -91,12 +97,17 @@ try:
             elif ('(' not in s):
                 line += s.strip() + " "
             else:
-                # e.g. INTEGER (0..28)
-                line += (s[:4]) + " "
-
-        # Enum in previous line
-        #if d1:
-        #    opts[','] = ','
+                try:
+                    if "BIT STRING" in s:
+                        # Get the size
+                        tmp = [str(_) for _ in list(s) if _.isdigit()]
+                        print("Line", lnum, s, tmp, ''.join(tmp))
+                        line += 'std::bitset<' + ''.join(tmp) + '>'
+                    else:
+                    # e.g. INTEGER (0..28)
+                        line += (s[:4]) + " "
+                except TypeError:
+                    print("Error @line", lnum, sys.exc_info()[0])
 
         d1 = False
         d2 = False
@@ -133,7 +144,8 @@ try:
             line = re.sub(re.escape(k), opts[k], line.strip())
 
         if not line.isspace():
-            if ("bool" not in line) and ("int" not in line):
+            if ("bool" not in line) and ("int" not in line)\
+               and ("bitset" not in line):
                 s = line.split(' ')
                 d = d1 or d2 or d3
                 i = 0
@@ -155,16 +167,23 @@ try:
         opts[','] = ' '
 
 except Exception:
-    print("Aborting, regex error ", sys.exc_info()[0])
+    print("Error @line", lnum, sys.exc_info()[0])
+    outp.write("// Error line: " + str(lnum))
+    #bytes(line).decode("utf-8", "ignore"))
+    print(line)
+    outp.seek(lnum+100)
+    # Skip over
+    line = inp.readline()
+    checkAsn(line)
     #raise
 
 finally:
     inp.close()
     os.system("astyle --style=gnu " + outp.name)
-    print("See output files: ", outp.name, outp2.name)
+    print(lnum, "lines processed. See output files: ", outp.name, outp2.name)
 
     outp2.write("\n\n// Forward declarations for " + outp.name)
-    outp2.write("\n// Author: " + __author__)
+    outp2.write("\n// Note: " + __author__)
     outp.close()
 
     for s in typedef_list:
@@ -174,5 +193,5 @@ finally:
     outp2.close()
     os.system("sed -i 's/typedef ;/ /g' " + outp2.name)
     os.system("sed -i 's/     / /g' " + outp2.name)
-    print(len(typedef_list), " typedefs generated. Check if any are missing")
+    print(len(typedef_list), " typedefs generated. Check if any are missing, and fix invalid C++ statements")
     
