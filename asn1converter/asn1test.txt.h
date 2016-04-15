@@ -36,8 +36,8 @@
 	    SLCommTxPoolToAddModListExtr13    poolToAddModListExtr13;
 	};
 	                 };
-	 bool   commTxAllowRelayDedicatedr13;
-	 
+     bool   commTxAllowRelayDedicatedr13;
+     
 };
 	 ;
 // -- ASN1STOP

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-# http://interactivepython.org/runestone/static/pythonds/Recursion/pythondsSierpinskiTriangle.html
-# Draw a fractal that exhibits the property of self-similarity
+# Draws a fractal that exhibits the property of self-similarity
+# Makhtar Diouf
 # $Id$
-__author__ = "Makhtar Diouf"
-
+# Ref: http://interactivepython.org/runestone/static/pythonds/Recursion/pythondsSierpinskiTriangle.html
 import turtle
 
 def drawTriangle(points, color, turt):
@@ -31,11 +30,13 @@ def sierpinski(points, degree, turt):
                         getMid(points[0], points[1]), 
                         getMid(points[0], points[2])], 
                    degree-1, turt)
+
         sierpinski([points[1], 
                         getMid(points[0], points[1]), 
                         getMid(points[1], points[2])], 
                    degree-1, turt)
-        sierpinski([points[2], 
+
+        sierpinski([points[2],
                         getMid(points[2], points[1]), 
                         getMid(points[0], points[2])], 
                    degree-1, turt)

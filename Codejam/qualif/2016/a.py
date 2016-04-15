@@ -4,7 +4,6 @@
 # Problem A: counting sheep
 
 import sys
-import math
 
 target = set()
 for i in range(10):

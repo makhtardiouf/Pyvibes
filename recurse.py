@@ -1,6 +1,8 @@
-#
-# Recursivity timing test
-# $Id$
+"""
+Recursivity timing test
+Makhtar Diouf
+$Id$
+"""
 import random
 from timeit import timeit as tm
 #from makhtar import utils as ut

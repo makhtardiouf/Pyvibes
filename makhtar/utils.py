@@ -27,7 +27,13 @@ def typewrite(s, sleeptime=0.05):
 
 def logit(msg):
     logging.debug(msg)
-    
+
+def time_code(func, *args, **kwargs):
+    from timeit import timeit as tm
+    print(func, args)
+    s = [ str(_) for _ in args]
+    print(tm("stmt=" + func + "(" + ','.join(s) + ")", setup="from __main__ import "+func))
+
 # Profiler
 def do_cprofile(func):
     """Add @utils.do_cprofile just before the target function definition"""
@@ -41,6 +47,3 @@ def do_cprofile(func):
         finally:
             prof.print_stats()
     return profiled_func
-
-if __name__ == "__main__" :
-    typewrite("Loaded makhtar's module")

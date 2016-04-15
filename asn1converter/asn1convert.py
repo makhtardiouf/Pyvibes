@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
 Parse a file containing ASN1 pseudo-code and prep it for C++ conversion.
-Shares some similarities with asn1c, but this version focus on the latest 3GPP TS docs extraction.
+Shares some similarities with asn1c, but this version focus on the latest 3GPP LTE specifications
 
 Formats the output file with 'astyle'.
 Ref: http://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
-Reviewed-by: Makhtar Diouf <makhtar.diouf@gmail.com>
 $Id: asn1convert.py, 9ddcffa7b4df  makhtar $
 """
 import sys
