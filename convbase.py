@@ -11,6 +11,7 @@ def convbase(n, base):
       return convbase(n // base, base) + symbols[n%base]
 
 print("Converting numbers to specified bases: ")
+print(convbase(1001, 3))
 print(convbase(1453, 16))
 print(convbase(10, 16))
 print(convbase(3, 2))

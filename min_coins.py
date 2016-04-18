@@ -6,6 +6,7 @@ Makhtar Diouf
 $Id$
 """
 from makhtar import utils
+from timeit import timeit
 
 #@utils.do_cprofile
 def probmin_coins(coinsList, change, known):
@@ -28,8 +29,6 @@ def probmin_coins(coinsList, change, known):
     return minCoins
 
 # With Dynamic prog
-
-
 def dp_min_coins(coinsList, change, minCoins=[0] * 64):
     for cents in range(change + 1):
         nCoins = cents
@@ -41,6 +40,6 @@ def dp_min_coins(coinsList, change, minCoins=[0] * 64):
 
 
 coinsList = [1, 5, 10, 25]
-
 print(probmin_coins(coinsList, 63, [0] * 64))
-utils.time_code("dp_min_coins", coinsList, 63)
+print(dp_min_coins(coinsList, 63))
+#utils.time_code("dp_min_coins", coinsList, 63)

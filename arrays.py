@@ -25,16 +25,10 @@ for i in range(len(a[0])):
 # Multidimentional arrays
 rows = [[1] * 5 for i in range(5)]
 print(rows)
-# empty on
-# r = [[]]
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 letters[2:5] = ['C', 'D', 'E']
 print(letters)
-
-# r = range(g)
-# for i in r:
-#     letters.append(i)
 
 # Clear
 letters[:] = []
@@ -74,7 +68,6 @@ print("Transposing matrix: \n", matrix, "\n", v, "\n", v2)
 # del(v[0])
 del v
 
-
 rows = matrix
 print(len(rows), len(rows[0]))
 
@@ -82,7 +75,6 @@ for i in range(len(rows)):
     total = 0;
     sumCol = 0
     for j in range(len(rows[i])):
-        #total += rows[i][j]
         sumCol += rows[j-1][i]
         if j < 4:
             rows[i][j] = j ** 3  # random.random()
