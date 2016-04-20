@@ -7,12 +7,11 @@ from collections import deque
 
 queue = deque(["Elhadji", "Johana", "Mouhammad"])
 print(queue)
-queue.append("Jimmy")  # Terry arrives
-queue.append("Ibrahim")  # Ibrahimovich arrives
-
+queue.append("Jimmy")
+queue.append("Ibrahim")
 print(queue)
 
-queue.popleft()  # The first to arrive now leaves
+queue.popleft()  # First in = First out
 print(queue)
 queue.reverse()
 print(queue)

@@ -1,5 +1,4 @@
 # Fibonnaci numbers up to n
-# Define a function
 
 def fibon(n):
     """Print a Fibonacci series up to n."""
@@ -13,10 +12,6 @@ def fibon(n):
     print()
     return result
 
-    # Now call the defined function
-
-
+# Now call the defined function
 output = fibon(1000)
 print("The output array is: ", output)
-
-
