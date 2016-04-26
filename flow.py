@@ -16,7 +16,7 @@ for i in range(5): {
     print (i)
 }
 
-words = ['cat', 'window', 'defenestrate']
+words = ['monster', 'window', 'defenestrate']
 words.sort()
 for w in words:
     print(w)
