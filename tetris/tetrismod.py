@@ -131,7 +131,7 @@ class Tetris:
                         j += 1
 
                     i += 1
-                    # Back to this piece's 1st column
+                    # Backtrack to this piece's 1st column
                     if j - piece.w > 0:
                         j -= piece.w
 
@@ -182,6 +182,7 @@ class Tetris:
                         self.board[i][j] = " "
                     j += 1
 
+	    # Backtrack to 1st col
             if j - piece.w > 0:
                 j -= piece.w
             if i < (self.nRows - 1):
