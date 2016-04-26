@@ -2,7 +2,7 @@
  * Author: Makhtar Diouf
  * $Id$
  * Extract Abstract Syntax Notation code from 3GPP RRC specs
- * See the sample EUTRA-RRC36331.txt  (ASN.1)
+ * See the samples in the ASN1 folder
  * February 24, 2016, 10:16 PM
  * g++ -std=c++11 -g -Wall -o parse_asn1 parse_asn1.cpp
  */
