@@ -1,43 +1,39 @@
+
+// Note: Adhoc ASN1 converter, by Makhtar Diouf
 #include "asn1test.txt_typedefs.h"
 // -- ASN1START
-	 ;
-	 struct     SLCommConfigr12    {
-	 enum        commTxResourcesr12   {
-	typedef          release;
-	 enum           setup    {
-	 struct        scheduledr12     {
-	CRNTI       slRNTIr12;
-	MACMainConfigSLr12     macMainConfigr12;
-	SLCommResourcePoolr12     scCommTxConfigr12;
-	       int        mcsr12;
-	} ;
-	 struct        ueSelectedr12     {
-	 Pool for normal usage;
-	 struct    commTxPoolNormalDedicatedr12      {
-	SLTxPoolToReleaseListr12     poolToReleaseListr12;
-	   SLCommTxPoolToAddModListr12    poolToAddModListr12;
-	};
-	};
-	};
-	                   };
-	 ;
-	 ;
-	 enum         scheduledr13x0  
-   {
-	typedef          release;
-	 struct           setup     {
-	LogicalChGroupInfoListr13    logicalChGroupInfoListr13;
-	 bool     multipleTxAllowedr13;
-	};
-	                  };
-	 struct        ueSelectedr13x0    {
-	 struct    commTxPoolNormalDedicatedExtr13     {
-	SLTxPoolToReleaseListExtr13     poolToReleaseListExtr13;
-	    SLCommTxPoolToAddModListExtr13    poolToAddModListExtr13;
-	};
-	                 };
-     bool   commTxAllowRelayDedicatedr13;
-     
+;
+struct SLCommConfig_r12 {
+  enum commTxResources_r12 {
+    typedef release; enum setup{struct scheduled_r12{
+        CRNTI slRNTI_r12; MACMainConfigSL_r12 macMainConfig_r12;
+        SLCommResourcePool_r12 scCommTxConfig_r12; int mcs_r12;};
+  struct ueSelected_r12 {
+         Pool for normal usage;
+         struct commTxPoolNormalDedicated_r12 {
+           SLTxPoolToReleaseList_r12 poolToReleaseList_r12;
+           SLCommTxPoolToAddModList_r12 poolToAddModList_r12;
+         };
+  };
 };
-	 ;
+}
+;
+;
+;
+enum scheduled_r13x0 {
+  typedef release;
+  struct setup{LogicalChGroupInfoList_r13 logicalChGroupInfoList_r13;
+               bool multipleTxAllowed_r13;};
+}
+;
+struct ueSelected_r13x0 {
+  struct commTxPoolNormalDedicatedExt_r13 {
+    SLTxPoolToReleaseListExt_r13 poolToReleaseListExt_r13;
+    SLCommTxPoolToAddModListExt_r13 poolToAddModListExt_r13;
+  };
+};
+bool commTxAllowRelayDedicated_r13;
+}
+;
+;
 // -- ASN1STOP

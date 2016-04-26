@@ -13,7 +13,10 @@ import re
 
 __author__ = "Adhoc ASN1 converter, by Makhtar Diouf"
 
+# Choose your C++ formatter
+formatter = "clang-format-3.6 -i"  # or "astyle --style=linux"
 infile = ''
+
 if len(sys.argv) < 2:
     # input("Specify the ASN file to convert: ")
     infile = "asn1test.txt"
@@ -44,6 +47,7 @@ opts = {
     "...": "\n",
     "[[": " \n",
     "]]": " \n",
+    #"SEQU": "std::list< >",
     "::=": " ",
     "--": " // ",
     "-": '',
@@ -60,7 +64,7 @@ try:
     outp.write("\n// Note: " + __author__)
     outp.write('\n#include "' + outp2.name + '"\n')
 
-    typedef_list = []
+    typedef_list = set() # avoid duplicates
     inAsn = False
 
     def checkAsn(_line):
@@ -121,10 +125,10 @@ try:
             tmp = line.split("{")
             line = tmp[0]
             tmp = tmp[1].split(',')
-            if 'SEQ' in line:
-                line += tmp[len(tmp)-1] + " { \n"
+            if 'SEQUENCE' or 'struct' in line:
+                line += tmp[len(tmp)-1] + " { \n\n"
             else:
-                line += tmp[len(tmp)-1] + " { \n\t" + tmp[0] + ", "
+                line += tmp[len(tmp)-1] + " { \n\n\t" + tmp[0] + ", "
 
             line += ', '.join(tmp[1:len(tmp)-2])
 
@@ -154,7 +158,7 @@ try:
                     i += 1
 
                 if (not d) and not (typed == "typedef"):
-                    typedef_list.append(typed)
+                    typedef_list.add(typed)
                 del(s)
 
         if d1:
@@ -178,7 +182,7 @@ except Exception:
 
 finally:
     inp.close()
-    os.system("astyle --style=gnu " + outp.name)
+    os.system(formatter + " " + outp.name)
     print(lnum, "lines processed. See output files: ", outp.name, outp2.name)
 
     outp2.write("\n\n// Forward declarations for " + outp.name)
@@ -192,5 +196,5 @@ finally:
     outp2.close()
     os.system("sed -i 's/typedef ;/ /g' " + outp2.name)
     os.system("sed -i 's/     / /g' " + outp2.name)
-    print(len(typedef_list), " typedefs generated. Check if any are missing, and fix invalid C++ statements")
+    print("\n", len(typedef_list), " typedefs generated. \nCheck if any are missing, and fix invalid C++ statements\n")
     
