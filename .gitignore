@@ -1,0 +1,6 @@
+uncompyle2
+__pycache__
+geany_run_script.sh
+python-graph 
+*.db*
+tetris-*
