@@ -2,5 +2,6 @@ uncompyle2
 __pycache__
 geany_run_script.sh
 python-graph 
+python-ds
 *.db*
 tetris-*
