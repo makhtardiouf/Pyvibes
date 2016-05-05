@@ -24,23 +24,6 @@
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit"
             ]
-        },
-        {
-            "name": "Django",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "program": "${workspaceRoot}/lists_ordered.py",
-            "args": [
-                "runserver",
-                "--noreload"
-            ],
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput",
-                "DjangoDebugging"
-            ]
         }
     ]
 }

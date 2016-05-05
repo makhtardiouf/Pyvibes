@@ -1,16 +1,14 @@
-# OrderedList implementation
-# Data structure streamlined and augmented by Makhtar Diouf
-# http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementinganOrderedList.html
+""" OrderedList implementation
+ Data structure streamlined and augmented by Makhtar Diouf
+ http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementinganOrderedList.html"""
 from random import randint
 
-
 class Node:
-
     def __init__(self, initdata):
         self.data = initdata
         self.next = None
-    
-    # Operator overloading (>)    
+
+    # Operator overloading (>)
     def __gt__(self, Node):
         return self.data > Node.data
 
@@ -18,6 +16,7 @@ class Node:
 class OrderedList(list):
 
     def __init__(self):
+        list.__init__(self)
         self.head = None
         self.idx = 0
         self.sz = 0
@@ -46,10 +45,9 @@ class OrderedList(list):
         return found
 
     def swap(self, n1, n2):
-        tmp = n1.data
-        n1.data = n2.data
-        n2.data = tmp
-    
+        # Python's short hand swap
+        n1.data, n2.data = n2.data, n1.data
+
     def add(self, item):
         self.idx = 0
         current = self.head
@@ -63,26 +61,27 @@ class OrderedList(list):
                 prev = current
                 current = current.next
                 self.idx += 1
-        
+
         if prev == None:
             tmp.next = self.head
             self.head = tmp
         else:
             tmp.next = current
             prev.next = tmp
-            
+
         self.sz += 1
         self.idx += 1
-        if (current) and (current.data > item):
+        self.insert(self.index(current.data), item)
+        '''if (current) and (current.data > item):
             self.swap(current, tmp)
-            self.insert(self.idx-2, item)
+            self.insert(self.idx-1, item)
         else:
-            self.insert(self.idx, item)
+            self.insert(self.idx, item)'''
 
     def isEmpty(self):
         return self.head == None
 
-    def size(self):        
+    def size(self):
         return self.sz
 
 
@@ -101,6 +100,6 @@ print(l.size())
 print(l, "\n\n")
 
 l = sorted(l)
-for i in range(len(l)):
+for i in enumerate(l):
     print(l[i], end=', ')
 print()
