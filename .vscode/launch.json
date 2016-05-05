@@ -7,6 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "${file}",
+            "pythonPath": "/usr/bin/python3",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
@@ -18,7 +19,8 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": true,
-            "program": "${file}",
+            "program": "{file}",
+            "pythonPath": "/usr/bin/python3",
             "externalConsole": true,
             "debugOptions": [
                 "WaitOnAbnormalExit",
