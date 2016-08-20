@@ -1,7 +1,7 @@
 __author__ = 'Makhtar'
 """
 Regroup utility functions, classes, vars
-$Id: utils.py, 0e68eb7c9c36  makhtar $
+$Id: utils.py, 4b3c476d11af  makhtar $
 If compiled, make sure utils.so is not in the same directory as utils.py
 """
 import datetime

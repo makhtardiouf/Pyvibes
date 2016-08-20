@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Codejam 20160416 R1A
+Codejam 2016 R1C
 Makhtar Diouf
 $Id$
 """
@@ -28,13 +28,8 @@ try:
         n, m = [int(x) for x in inp.readline().split(sep=' ')]
         print("n, m:", n, m)
 
-        t = []  # [[0] * n for j in range(m)]
-        # Read the rows
-        for i in range(n):
-            row = [int(x) for x in inp.readline().split(sep=' ')]
-            t.append(row)
-
-        line = "Case #{}{}{}\n".format(c, ': ', solve(t, n, m))
+        S = inp.readline().strip()
+        line = "Case #{}{}{}\n".format(c, ': ', solve(S, n, m))
         sys.stdout.write(line)
         outp.write(line)
 
@@ -45,4 +40,3 @@ except Exception as ex:
 finally:
     inp.close()
     outp.close()
-

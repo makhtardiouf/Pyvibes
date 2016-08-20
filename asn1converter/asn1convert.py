@@ -5,7 +5,7 @@ Shares some similarities with asn1c, but this version works on the latest 3GPP L
 
 Usage: ./asn1converter ASN_FILENAME
 Ref: http://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
-$Id: asn1convert.py, 9ddcffa7b4df  makhtar $
+$Id: asn1convert.py, 4b3c476d11af  makhtar $
 """
 import sys
 import os

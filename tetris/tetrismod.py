@@ -1,4 +1,4 @@
-"""$Id: tetrismod.py, 8c507338968c  makhtar $
+"""$Id: tetrismod.py, 4b3c476d11af  makhtar $
 Module for a simple command-line Tetris game, with a nontrivial implementation"""
 import sys
 from random import choice, randint

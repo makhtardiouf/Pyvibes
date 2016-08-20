@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Codejam 20160416 R1A
+Codejam 2016 R1C
 Makhtar Diouf
 $Id$
 """
