@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-* Given a paragraph of text, write a program to find the first shortest
- sub-segment that contains each of the given k words at least once. A segment is said to be
- shorter than other if it contains less number of words.
+Processing a Parag of Text
+[Uncomplete BUGGY Version!!]
 
 Makhtar Diouf
 $Id$
