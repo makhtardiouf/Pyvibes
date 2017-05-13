@@ -4,6 +4,8 @@
  sub-segment that contains each of the given k words at least once. A segment is said to be
  shorter than other if it contains less number of words.
 
+[Uncomplete BUGGY Version!!]
+
 Makhtar Diouf
 $Id$
 """
@@ -67,7 +69,7 @@ try:
                 end = y
 
             tgt = allWords[x]
-            if tgt in table.keys():
+            if table.__contains__(tgt):
                 table[tgt] -= 1
             x += 1
         y += 1
