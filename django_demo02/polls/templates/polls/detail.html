@@ -12,15 +12,22 @@
         <div class="jumbotron">
             <h3>Question details</h3>
             <hr>
-            
-            {% if question %}
-                               
-                <span class="alert alert-info">{{ question.publi_date}}: {{ question.content }}</span>               
-               
-            {% else %}
-                <p>No data recorded yet for this question.</p>
-            {% endif %}
-            
+            <div>
+                {% if question %}                                
+                    <p>{{ question.publi_date}}: {{ question.content }}</p>               
+                    <ul>                        
+                        {% for c in question.choice_set.all %}
+                            <li>{{ c.choice }} => {{ c.votes }} votes </li>
+                        {% empty %}
+                            <li>No choices recorded yet</li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No data recorded yet for this question.</p>
+                {% endif %}
+            </div>
+
             <div>
                 <a class="btn btn-success" href="/polls/">List</a>
             </div>

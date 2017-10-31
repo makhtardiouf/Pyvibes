@@ -32,10 +32,10 @@ def __main__(self):
     q = Question.objects.get(pk=1)
 
     q.choice_set.all()
-    q.choice_set.create(choice='Not much', votes=0)
-    q.choice_set.create(choice='The sky', votes=0)
+    q.choice_set.create(choice='Not much', votes=3)
+    q.choice_set.create(choice='The sky', votes=2)
 
-    c = q.choice_set.create(choice='Just hacking again', votes=0)
+    c = q.choice_set.create(choice='Just code it', votes=15)
 
     # Choice objects have API access to their related Question objects.
     c.question

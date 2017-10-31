@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Demoing Python Django</title>
+        <title>Demoing Python Django - Error</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
@@ -10,21 +10,17 @@
 <body> 
     <div class="container">
         <div class="jumbotron">
-            <h3>Welcome to Makhtar's demo Polling app</h3>
-            <h4>Latest questions</h4>
-            <hr>
-            {% if qlist %}
-                <ul>
-                {% for q in qlist %}
-                    <!-- Use url name defined in polls/urls.py -->
-                    <li>{{ q.publi_date}}: <a href="{% url 'detail' q.id %}">{{ q.content }}</a></li>
-                {% endfor %}
-                </ul>
+            <h3>Error</h3>
+       
+            <div class="alert alert-warning">
+                {% error_msg %}
+            </div>
 
-            {% else %}
-                <p>No questions data recorded yet.</p>
-            {% endif %}
+            <div>
+                <a class="btn btn-success" href="/polls/">List</a>
+            </div>
         </div>
     </div>
 </body>   
 </html>
+

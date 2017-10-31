@@ -15,19 +15,21 @@ def index(request):
     qlist = Question.objects.order_by('-publi_date')[:5]
     #resp = '<br>'.join([q.content for q in qlist])
 
+    # When not using the 'render' function
     template = loader.get_template('polls/index.html')
     context = {'qlist' : qlist, }
     return HttpResponse(template.render(context, request))
-    #return HttpResponse("Welcome to Makhtar's demo Polling app. Here are the latest questions:<br>" + resp)
+    #return HttpResponse(" Here are the latest questions:<br>" + resp)
 
 def detail(request, question_id):
-    logging.info("This a log test")
+    logging.info("Accessing question detail page")
+    try:
+        question = Question.objects.get(pk=question_id)    
+    except Question.DoesNotExist:
+        raise Http404("Question does not exist")
 
-    question = Question.objects.get(pk=question_id)
-    context = {'question': question}
-    return render(request, 'polls/detail.html', context)
-    #return HttpResponse(str(datetime.now()) + ": You're looking at question %s." % question_id)
-
+    return render(request, 'polls/detail.html', {'question': question})
+   
 def results(request, question_id):
     response = "You're looking at the results of question %s."
     return HttpResponse(response % question_id)
