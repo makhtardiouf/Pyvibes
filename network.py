@@ -15,11 +15,11 @@ try:
             print(line)
 
     server = smtplib.SMTP('localhost')
-    src = "makhtar@softensys.com"
+    src = "makhtar@albouritech.com"
     dest = 'makhtar.diouf@gmail.com'
     server.sendmail(src, dest,
                     """To: makhtar.diouf@gmail.com
-                    From: makhtar@softensys.com
+                    From: makhtar@albouritech.com
 
                     Hello, from Python. Remember that programming is your best bet!
                     """)
