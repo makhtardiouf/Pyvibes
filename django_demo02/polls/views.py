@@ -1,38 +1,31 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
 
-from datetime import datetime
 from .models import Question, Choice
 
-import logging
+# Using Django's generic views here. Role of Controllers
 
-# Create your views here. Role of Controllers
 
-def index(request):
-    logging.info("This a log test")
-    # Retrieve last 5 questions
-    qlist = Question.objects.order_by('-publi_date')[:5]
-    #resp = '<br>'.join([q.content for q in qlist])
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'qlist'
 
-    # When not using the 'render' function
-    template = loader.get_template('polls/index.html')
-    context = {'qlist' : qlist, }
-    return HttpResponse(template.render(context, request))
-    #return HttpResponse(" Here are the latest questions:<br>" + resp)
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-publi_date')[:5]
 
-def detail(request, question_id):
-    logging.info("Accessing question detail page")
-    try:
-        question = Question.objects.get(pk=question_id)    
-    except Question.DoesNotExist:
-        raise Http404("Question does not exist")
 
-    return render(request, 'polls/detail.html', {'question': question})
-   
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'polls/detail.html'
+
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'polls/results.html'
+
 
 def vote(request, question_id):
-    return HttpResponse("You're voting on question %s." % question_id)
+    ... # same as above, no changes needed.
