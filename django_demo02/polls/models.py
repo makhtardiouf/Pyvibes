@@ -12,8 +12,9 @@ class Question(models.Model):
         return self.content
 
     def is_recent(self):
-        return self.publi_date >= timezone.now() - datetime.timedelta(days=1)
-
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.publi_date <= now
+        
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
