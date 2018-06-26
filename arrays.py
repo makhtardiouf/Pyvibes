@@ -1,13 +1,15 @@
 # Trivial arrays operations
 # $Id: arrays.py, 4b3c476d11af  makhtar $
+
 from makhtar import utils as ut
 import sys
 import time
 
 a = ['Mary', 'had', 'a', 'little', 'lamb']
 a.sort()
+
 for i in range(len(a)):
-    print(i, a[i])
+    print(i, ": ", a[i], sep='')
 
 b = []
 # range with step
@@ -28,7 +30,7 @@ print(rows)
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 letters[2:5] = ['C', 'D', 'E']
-print(letters)
+print("Letters:", letters)
 
 # Clear
 letters[:] = []
@@ -43,13 +45,14 @@ print(x[0][1], x[1][1])
 
 vec = [-4, -2, 0, 2, 4]
 vec = [x * 2 for x in vec]
-# filter the list to exclude negative numbers
-v2 = [x for x in vec if x >= 0]
-print(v2)
 
-# apply a function to all the elements
+# Filter the list to exclude negative numbers
+v2 = [x for x in vec if x >= 0]
+print("Filtered negative nums from", vec, "=>", v2)
+
+# Apply a function to all the elements
 v2 = [abs(x) for x in vec]
-print(v2)
+print("Absolute values:", v2)
 
 # Transpose matrix
 matrix = [
@@ -69,10 +72,10 @@ print("Transposing matrix: \n", matrix, "\n", v, "\n", v2)
 del v
 
 rows = matrix
-print(len(rows), len(rows[0]))
+print("Dimensions: ", len(rows), len(rows[0]))
 
 for i in range(len(rows)):
-    total = 0;
+    total = 0
     sumCol = 0
     for j in range(len(rows[i])):
         sumCol += rows[j-1][i]
