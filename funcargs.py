@@ -1,6 +1,7 @@
 # Functions with variable number of args
+# https://docs.python.org/3.5/tutorial/controlflow.html
 
-def Confirm(prompt, retries=4, complaint='Yes or no, please!'):
+def Confirm(prompt, retries=4, complaint='yes or no, please!'):
     while True:
         ok = input(prompt)
         if ok in ('y', 'ye', 'yes'):
@@ -22,4 +23,3 @@ if ans:
 else:
     print("What are you waiting for? huhu")
     
-

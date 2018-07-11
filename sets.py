@@ -1,7 +1,7 @@
 
 
 # $Id: sets.py, c86448423bdc  makhtar $
-# set : unordered collection with no duplicate elements
+# set: unordered collection with no duplicate elements
 # support mathematical operations like union, intersection, difference, and symmetric difference
 
 basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
@@ -19,6 +19,7 @@ print('\n', "a - b", a - b)  # letters in a but not in b
 # {'r', 'd', 'b'}
 print('\n', "a | b",  a | b)  # letters in either a or b
 # {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
+
 print('\n', "a & b",  a & b)  # letters in both a and b
 # {'a', 'c'}
 print('\n', "a ^ b",  a ^ b)  # letters in a or b but not both

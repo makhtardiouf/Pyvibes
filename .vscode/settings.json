@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "python.pythonPath": "python3",
+    "python.pythonPath": "C:\\Users\\makhtar.diouf\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
     "python.linting.enabled": false,
     "python.linting.pep8Enabled": true,
     "python.linting.maxNumberOfProblems": 20

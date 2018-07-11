@@ -18,21 +18,22 @@ def showMsg(msg):
     print("\n", datetime.datetime.now(), msg)
 
 
-def typewrite(s, sleeptime=0.05):
+def typewrite(s, sleep_t=0.05):
     for i in range(len(s)):
         sys.stdout.write(s[i])
         sys.stdout.flush()
-        time.sleep(sleeptime)
-
+        time.sleep(sleep_t)
 
 def logit(msg):
     logging.debug(msg)
+
 
 def time_code(func, *args, **kwargs):
     from timeit import timeit as tm
     print(func, args)
     s = [ str(_) for _ in args]
-    print(tm("stmt=" + func + "(" + ','.join(s) + ")", setup="from __main__ import "+func))
+    print(tm("stmt=" + func + "(" + ','. join(s) + ")", setup="from __main__ import "+func))
+
 
 # Profiler
 def do_cprofile(func):
@@ -44,6 +45,7 @@ def do_cprofile(func):
             result = func(*args, **kwargs)
             prof.disable()
             return result
+            
         finally:
             prof.print_stats()
     return profiled_func

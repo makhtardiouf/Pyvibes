@@ -1,12 +1,14 @@
 # $Id: flow.py, 4b3c476d11af  makhtar $
+# Control flows and iterations with ranges
+
 import sys
 import random
 
 x = random.random()
 if x < 0 :
-    print (x, " x is negative")
+    print (x, "is negative")
 elif x > 0:
-    print (x, " x is positive")
+    print (x, "is positive")
 
 
 a = ""
@@ -30,6 +32,6 @@ for n in range(2, 10):
             break
 
     else:
-        # else not related to the previous if
+        # else not related to the previous if, but to the 'for'
         # loop fell through without finding a factor
         print(n, 'is a prime number')
