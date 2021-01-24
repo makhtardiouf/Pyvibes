@@ -1,4 +1,3 @@
-# $Id: classes.py, ba755c6924d3  makhtar $
 '''
 Demo for Classes, simulating pseudo stock market operations
 
@@ -8,7 +7,7 @@ import random
 import datetime
 
 class Stock:
-    availabilityDate = datetime.date.today()
+    availDate = datetime.date.today()
 
     # Conctructor of the object
     def __init__(self):
@@ -21,13 +20,13 @@ class Stock:
         return len(self.shares)
 
     def show(self):
-        width = 15 #len(repr(self.shares[1]))
+        width = 15
         print(str('\t' + '-'*width).center(10), str('\t' + '-'*width).center(20))
 
         for i, s in enumerate(self.shares):
             print("\t{0:10}".format("\tItem " + str(i)), " | \t{0:20}".format(str(s)))
         #    i += 1
-        print("Available since: ", self.availabilityDate)
+        print("Available since: ", self.availDate)
 
 class Stockbis(Stock):
     def __init__(self):

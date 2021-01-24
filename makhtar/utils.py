@@ -1,7 +1,6 @@
 __author__ = 'Makhtar'
 """
 Regroup utility functions, classes, vars
-$Id: utils.py, 4b3c476d11af  makhtar $
 If compiled, make sure utils.so is not in the same directory as utils.py
 """
 import datetime
@@ -11,7 +10,7 @@ import logging
 import cProfile
 
 def __init__():
-    logging.basicConfig(level=logging.DEBUG, filename=(sys.argv[0] + ".log"))
+    logging.basicConfig(level=logging.DEBUG, filename=("pyvibes.log"))
 
 
 def showMsg(msg):

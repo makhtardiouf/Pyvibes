@@ -1,15 +1,13 @@
 
-
 # $Id: keyvalues.py, c86448423bdc  makhtar $
 # Dictionaries or “associative memories” or “associative arrays”.
 
 import random
 
 tel = {'jack': 4098, 'sape': 4139}
+# Add anohter
 tel['guido'] = 4127
 print('\n', tel)
-
-# {'sape': 4139, 'guido': 4127, 'jack': 4098}
 
 print('\n', "Jack's number is: ", tel['jack'])
 

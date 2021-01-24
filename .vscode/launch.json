@@ -7,7 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "${file}",
-            "pythonPath": "/usr/bin/python3",
+            "python": "D:\\Progs\\python-3.9.1-embed-amd64\\python.exe",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
@@ -20,7 +20,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "{file}",
-            "pythonPath": "/usr/bin/python3",
+            "python": "D:\\Progs\\python-3.9.1-embed-amd64\\python.exe",
             "externalConsole": true,
             "debugOptions": [
                 "WaitOnAbnormalExit",

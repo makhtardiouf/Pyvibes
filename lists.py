@@ -1,20 +1,20 @@
 
 #$Id: lists.py, c86448423bdc  makhtar $
 # https://docs.python.org/3.3/tutorial/datastructures.html
-a = [66.25, 333, 333, 1, 1234.5]
+a = [66.25, 33, 33, 1, 1234.5]
 
 # count returns the number of times the item appears
-print(a.count(333), a.count(66.25), a.count('x'))
+print(a.count(33), a.count(66.25), a.count('x'))
 m = map(a.count, a)
 
 a.insert(2, -1)
 print(a)
-a.append(333)
+a.append(33)
 print(a)
-print(a.index(333))
-print(a.count(333))
+print(a.index(33))
+print(a.count(33))
 
-a.remove(333)
+a.remove(33)
 print(a)
 
 a.reverse()

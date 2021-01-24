@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "python.pythonPath": "C:\\Users\\makhtar.diouf\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "python.pythonPath": "D:\\Progs\\python-3.8.2-embed-win32\\python.exe",
     "python.linting.enabled": false,
-    "python.linting.pep8Enabled": true,
+    "python.linting.pycodestyleEnabled": true,
     "python.linting.maxNumberOfProblems": 20
 }

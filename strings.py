@@ -1,13 +1,13 @@
 # $Id: strings.py, fdbfe3d97370  makhtar $
-# Trivial strings operations
+# Trivial strings operations. Str are immutable sequences
 
-s = "hellopython world"
+s = "Hello Python World"
 
 # slices
 print(s[:5])
 print(s[5:12])
 
-print(3*s, " ")
+print(3*s, sep=" ")
 print("Length of s:", len(s))
 
 s = s.capitalize()
@@ -23,3 +23,6 @@ r = [x.capitalize() for x in r]
 # Rebuild the string
 s = ' '.join(r)
 print(s)
+
+# Python 3.9
+print(s.removeprefix("H"))
