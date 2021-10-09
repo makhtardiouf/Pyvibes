@@ -1,30 +1,32 @@
 # $Id: flow.py, 4b3c476d11af  makhtar $
 # Control flows and iterations with ranges
 
-import sys
 import random
 
-x = random.random()
+x = random.randint(-20, 20)
 if x < 0 :
     print (x, "is negative")
 elif x > 0:
     print (x, "is positive")
 
 
-a = ""
 for i in range(5): {
-   # a = str.format("{} {}", "1", i)
-
-    print (i)
+    print(i, end=" ")
 }
 
 words = ['monster', 'window', 'defenestrate']
 words.sort()
 for w in words:
-    print(w)
+    print("\t", w)
 
-print("Range with step: ", list(range(0, 10, 3)))
+print("\nRange with step: ", list(range(0, 10, 3)))
 
+print("\nIndices:")
+a = ['Mary', 'had', 'a', 'little', 'lamb']
+for i in range(len(a)):
+    print(f"{i}: {a[i]}")
+
+print("\n***** Checking prime numbers ....")
 for n in range(2, 10):
     for x in range(2, n):
         if n % x == 0:

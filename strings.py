@@ -26,3 +26,9 @@ print(s)
 
 # Python 3.9
 print(s.removeprefix("H"))
+
+x = 10 * 3.25
+y = 20 * 20
+# F-strings
+s = f'The value of x is {x}, and y is {y}...'
+print(s)

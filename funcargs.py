@@ -1,25 +1,21 @@
 # Functions with variable number of args
 # https://docs.python.org/3.5/tutorial/controlflow.html
 
-def Confirm(prompt, retries=4, complaint='yes or no, please!'):
-    while True:
-        ok = input(prompt)
-        if ok in ('y', 'ye', 'yes'):
-            return True
-        if ok in ('n', 'no', 'nop', 'nope'):
-            return False
+def buyCheese(kind, *arguments, **keywords):
+    print("-- Do you have any", kind, "?")
+    print("-- I'm sorry, we're all out of", kind)
 
-        # retries = retries - 1
-        retries -= 1
-        if retries < 0:
-            raise OSError('uncooperative user')
-        print(complaint)
-
-
-ans = Confirm("Are you married? ", 2)
-
-if ans:
-    print("That's the way to go~")
-else:
-    print("What are you waiting for? huhu")
+    for arg in arguments:
+        print(arg)
+    print("\n", "-" * 40)
+    print("Featuring:")
     
+    for k in keywords:
+        print(f"{k}: {keywords[k]}")
+
+
+buyCheese("Limburger", "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           shop_keeper="Michael Palin",
+           client="John Cleese",
+           sketch="Cheese Shop Sketch")
