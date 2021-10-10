@@ -9,9 +9,11 @@ def buyCheese(kind, *arguments, **keywords):
         print(arg)
     print("\n", "-" * 40)
     print("Featuring:")
-    
+
     for k in keywords:
         print(f"{k}: {keywords[k]}")
+
+    print(f"The shop keeper was {keywords['shop_keeper']}")
 
 
 buyCheese("Limburger", "It's very runny, sir.",
