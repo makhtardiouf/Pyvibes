@@ -2,7 +2,7 @@
 """
 Classic Binary search
 Makhtar Diouf
-$Id$
+
 Approx number of Items to search: n / 2^i
 Complexity: O(logn), from log(n) = log(2^i). Not good for small values of n
 Ref: http://interactivepython.org/runestone/static/pythonds/SortSearch/TheBinarySearch.html

@@ -22,6 +22,7 @@ def typewrite(s, sleep_t=0.05):
         sys.stdout.write(s[i])
         sys.stdout.flush()
         time.sleep(sleep_t)
+    print()
 
 def logit(msg):
     logging.debug(msg)
@@ -47,4 +48,5 @@ def do_cprofile(func):
             
         finally:
             prof.print_stats()
+            
     return profiled_func
