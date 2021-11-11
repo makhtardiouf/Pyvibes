@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "python.pythonPath": "D:\\Progs\\python-3.8.2-embed-win32\\python.exe",
+    "python.pythonPath": "/home/gitpod/.pyenv/versions/3.8.12/bin/python",
     "python.linting.enabled": false,
     "python.linting.pycodestyleEnabled": true,
     "python.linting.maxNumberOfProblems": 20
