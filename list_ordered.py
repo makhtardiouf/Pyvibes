@@ -17,9 +17,15 @@ class OrderedList(list):
 
     def __init__(self):
         list.__init__(self)
-        self.head = None
+        self.head = Node(0)
         self.idx = 0
         self.sz = 0
+
+    def isEmpty(self):
+        return self.head == None
+
+    def size(self):
+        return self.sz
 
     def index(self, item):
         exists = self.search(item)
@@ -41,65 +47,61 @@ class OrderedList(list):
                 else:
                     current = current.next
                     self.idx += 1
-
         return found
 
     def swap(self, n1, n2):
         # Python's short hand swap
         n1.data, n2.data = n2.data, n1.data
 
+
     def add(self, item):
-        self.idx = 0
-        current = self.head
-        prev = None
-        stop = False
-        tmp = Node(item)
-        while current != None and not stop:
-            if current > tmp:
-                stop = True
+        try:
+            self.idx = 0
+            current = self.head
+            prev = None
+            stop = False
+            tmp = Node(item)
+            while current != None and not stop:
+                if current > tmp:
+                    stop = True
+                else:
+                    prev = current
+                    current = current.next
+                    self.idx += 1
+
+            if prev == None:
+                tmp.next = self.head
+                self.head = tmp
             else:
-                prev = current
-                current = current.next
-                self.idx += 1
+                tmp.next = current
+                prev.next = tmp
 
-        if prev == None:
-            tmp.next = self.head
-            self.head = tmp
-        else:
-            tmp.next = current
-            prev.next = tmp
+            #breakpoint()
+            self.sz += 1
+            self.idx += 1
+            #self.insert(self.index(current.data), item)
+            # workaround the above bug
+            self.append(item)
+            self.sort()
 
-        self.sz += 1
-        self.idx += 1
-        self.insert(self.index(current.data), item)
-        '''if (current) and (current.data > item):
-            self.swap(current, tmp)
-            self.insert(self.idx-1, item)
-        else:
-            self.insert(self.idx, item)'''
-
-    def isEmpty(self):
-        return self.head == None
-
-    def size(self):
-        return self.sz
+        except Exception as e:
+            print(f"Failed to add item: {e}")
 
 
-l = OrderedList()
-l.add(150)
-l.add(93)
+
+orders = OrderedList()
 for i in range(10):
-    l.add(randint(i, 200))
+    orders.add(randint(i, 200))
 
-print(l.size())
-print(l.search(93))
-print(l.search(100))
-print("Deleting idx: ", l.index(93))
-# del(l.index(31))
-print(l.size())
-print(l, "\n\n")
+print(orders.size())
+print(orders.search(93))
+print(orders.search(100))
 
-l = sorted(l)
-for i in enumerate(l):
-    print(l[i], end=', ')
+print("Deleting idx: ", orders.index(93))
+# del(orders.index(31))
+print(orders.size())
+print(orders, "\n\n")
+
+for i,v in enumerate(orders):
+    print(orders[i], end=', ')
 print()

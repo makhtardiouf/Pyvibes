@@ -20,14 +20,13 @@ for x in range(1, 11):
 
 # zero padding
 print('\n', '12'.zfill(5))
-print('We are the {} who say "{}!\n"'.format('knights', 'Ni'))
+print(f'We are the knights who say "Ni!\n"')
 print('{1} and {0}'.format('spam', 'eggs'))
 
 print('This {food} is {adjective}.'.format(
     food='spam', adjective='absolutely horrible'))
 
 # use '!a' (apply ascii()), '!s' (apply str()) and '!r' (apply repr()) to apply formatting
-#pi = str(math.pi)[0:4]
 print('The value of PI is approximately {!r}.'.format(math.pi))
 
 # as in C, specify the number of decimals
