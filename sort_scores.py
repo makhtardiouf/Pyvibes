@@ -38,7 +38,8 @@ def processWithLists():
     # Ordered list of unique scores
     scores = sorted(set(scores))
     secLowest = scores[1] # 2nd lowest
-    names = [ a[0] for a in students if a[1] == secLowest ]
+    
+    names = [ s[0] for s in students if s[1] == secLowest ]
     return names
 
 
@@ -54,7 +55,8 @@ def processWithDict():
 
     scores = list(set([s['score'] for s in students]))
     secLowest = scores[1]
-    names = [ print(s['name']) for s in students if s['score'] == secLowest ]
+    # Already sorted by name
+    names = [ s['name'] for s in students if s['score'] == secLowest ]
     return names
 
 
