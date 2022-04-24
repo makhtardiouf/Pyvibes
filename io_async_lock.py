@@ -4,19 +4,19 @@
 
 import asyncio
 
-async def coro(name, lock):
-    print('coro {}: waiting for lock'.format(name))
+async def runner(name, lock):
+    print(f'runner {name}: waiting for lock')
 
     async with lock:
-        print('coro {}: holding the lock'.format(name))
+        print(f'runner {name}: holding the lock')
         await asyncio.sleep(1)
-        print('coro {}: releasing the lock'.format(name))
+        print(f'runner {name}: releasing the lock')
 
 loop = asyncio.get_event_loop()
 lock = asyncio.Lock()
-coros = asyncio.gather(coro("Test", lock), coro(1, lock), coro(2, lock))
+runners = asyncio.gather(runner("Cruiser", lock), runner("F-16 Jet", lock), runner("Honda", lock))
 
 try:
-    loop.run_until_complete(coros)
+    loop.run_until_complete(runners)
 finally:
     loop.close()
