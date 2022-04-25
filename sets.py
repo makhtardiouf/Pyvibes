@@ -28,15 +28,3 @@ print('\n', "a ^ b",  a ^ b)  # letters in a or b but not both
 
 a = {x for x in 'abracadabra' if x not in 'abc'}
 print('\n', a)
-
-
-def count_substring(s, sub):
-    '''Count substring, including overlap '''
-    found = set()
-    for i in range(len(s)):
-        found.add(s.find(sub, i))
-        print(f"Index: {i}, Set: {list(found)}")
-
-    return len([x for x in found if x >= 0 ])
-
-print(count_substring("ininini", "ini"))

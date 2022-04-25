@@ -1,6 +1,7 @@
 
 '''
 Find the temperature that is closes to 0
+See better alternative: closestnum.py
 '''
 
 def closestToZero(ts: list):
