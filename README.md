@@ -1,6 +1,6 @@
 # Python
 
-Experimental code to stay fluent in Python trivia and more.
+Experimental code to stay fluent in Python
 
 * Utility programs:
  - asn1converter: convert to C++ Abstract Syntax Notation code from 3GPP RRC specs, better than asn1c :)
