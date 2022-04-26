@@ -7,7 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "${file}",
-            "python": "D:\\Progs\\python-3.9.1-embed-amd64\\python.exe",
+            "python": "D:\\Progs\\Anaconda3\\python.exe",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",

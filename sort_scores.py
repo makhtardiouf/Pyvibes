@@ -32,14 +32,13 @@ def processWithLists():
         score = float(input())
         scores.append(score)
         students.append([name, score])
-    
+
     print(students)
 
     # Ordered list of unique scores
     scores = sorted(set(scores))
-    secLowest = scores[1] # 2nd lowest
-    
-    names = [ s[0] for s in students if s[1] == secLowest ]
+    secLowest = scores[1] if len(scores) > 1 else None # 2nd lowest
+    names = [s[0] for s in students if s[1] == secLowest]
     return names
 
 
@@ -54,8 +53,8 @@ def processWithDict():
     #breakpoint()
 
     scores = list(set([s['score'] for s in students]))
-    secLowest = scores[1]
-    # Already sorted by name
+    secLowest = scores[1] if len(scores) > 1 else None # 2nd lowest
+
     names = [ s['name'] for s in students if s['score'] == secLowest ]
     return names
 

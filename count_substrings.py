@@ -14,4 +14,4 @@ def count_substring(s, sub):
 
 source = "ininini"
 sub = "ini"
-print(f"\nNumber of sub-strings '{sub}' found: ", count_substring(source, sub))
+print(f"\nNumber of sub-strings '{sub}' found in '{source}': ", count_substring(source, sub))
