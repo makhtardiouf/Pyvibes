@@ -46,18 +46,6 @@ t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
 
 pprint.pprint(t, width=30)
 
-import textwrap
-
-doc = """The wrap() method is just like fill() except that it returns
- a list of strings instead of one big string with newlines to separate
- the wrapped lines."""
-
-doc = textwrap.fill(doc, width=40)
-doc2 = textwrap.wrap(doc, width=40)
-print(doc)
-for txt in doc2:
-    print(txt)
-
 import locale
 # The value should correspond to one available on the OS
 # try locale -a  |less to list them
