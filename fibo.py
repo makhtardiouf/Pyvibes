@@ -2,8 +2,10 @@
 # Module example Fibonacci numbers
 __name__ = 'Test fibonacci demoing modularisation'
 
-def fib(n):  # write Fibonacci series up to n
-    print("Calculating ", n)
+def fib(n):
+    ''' Generate Fibonacci series up to n '''
+    print(f"Calculating Fibonacci of {n}")
+
     a, b = 0, 1
     while b < n:
         print(b, end=' ')
@@ -11,7 +13,10 @@ def fib(n):  # write Fibonacci series up to n
     print()
 
 
-def fib2(n):  # return Fibonacci series up to n
+def fib2(n):
+    ''' Generate Fibonacci array up to n '''
+    print(f"Fibonnaci array of {n}")
+
     result = []
     a, b = 0, 1
     while b < n:
@@ -19,9 +24,27 @@ def fib2(n):  # return Fibonacci series up to n
         a, b = b, a + b
     return result
 
+def recurseFibo(n):
+    ''' Nth Fibonacci number '''
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    return recurseFibo(n-1) + recurseFibo(n-2)
+
+
 # make the file usable as a script as well as an importable module
-# test as python fibo.py 10
 #if __name__ == "__main__":
 import sys
 
-print(fib2(int(sys.argv[1])))
+n = 0
+if len(sys.argv) <= 1:
+    n = int(input("Input a number to determine its Fibonacci serie: "))
+    fib(n)
+else:
+    n = int(sys.argv[1])
+    serie = fib2(n)
+    print(serie)
+
+print(f"{n}th Fibonacci number...")
+print(recurseFibo(n))
