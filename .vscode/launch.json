@@ -7,7 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "${file}",
-            "python": "D:\\Progs\\Anaconda3\\python.exe",
+            "python": "/usr/bin/python3",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
@@ -20,7 +20,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "program": "{file}",
-            "python": "D:\\Progs\\python-3.9.1-embed-amd64\\python.exe",
+            "python": "/usr/bin/python3",
             "externalConsole": true,
             "debugOptions": [
                 "WaitOnAbnormalExit",

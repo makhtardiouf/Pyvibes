@@ -32,6 +32,9 @@ def recurseFibo(n):
         return 1
     return recurseFibo(n-1) + recurseFibo(n-2)
 
+def memoizationFibo(n):
+    '''Use a memo table to pre-compute'''
+    pass
 
 # make the file usable as a script as well as an importable module
 #if __name__ == "__main__":
