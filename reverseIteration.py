@@ -18,6 +18,8 @@ class Reverse:
         return self.content[self.idx]
 
 # Using Generators is more compact
+''' Generators don't keep an entire serie in memory.
+Results are computed on-demand. '''
 def gen_reverse(content):
     # step backwards by -1 till 0
     for i in range(len(content) - 1, -1, -1):
