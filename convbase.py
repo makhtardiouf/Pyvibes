@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # http://interactivepython.org/runestone/static/pythonds/Recursion/pythondsConvertinganIntegertoaStringinAnyBase.html
-# $Id$
+# Manual base conversion
 
 def convbase(n, base):
    symbols = "0123456789ABCDEF"

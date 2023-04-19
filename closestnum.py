@@ -1,7 +1,7 @@
 """ Find the number closest to 0 
 Simpler solution to the "Temperature closest to zero problem"
 
-Sample inputs
+Sample inputs:
 -40 -5 -4 -2 2 4 5 11 12 18
 7 -10 13 8 4 -7.2 -12 1 -3.7 3.5 -9.6 6.5 -1.7 -6.2 7
 -273

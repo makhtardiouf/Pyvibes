@@ -39,7 +39,7 @@ for name, phone in table.items():
 # Base convertions
 print("\nBinary of {:d} is {:b}".format(8, 8))
 
-print("\nint: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}".format(42))
+print("\nint: {0:d};  hex: {0:X};  oct: {0:o};  bin: {0:b}".format(42))
 
 # Templates
 from string import Template
