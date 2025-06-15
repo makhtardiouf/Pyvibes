@@ -13,6 +13,7 @@ def isbalanced(_target):
     cstack = list()
     for s in list(_target):
         # Ignore characters not in the table
+        #ostack = [s for s in symbols]
         if s in symbols:
             ostack.append(s)
         elif s in symbols.values():

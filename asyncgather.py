@@ -1,9 +1,12 @@
 import asyncio
+from time import sleep
 
+# explain this code
 
 async def foo(n):
     print(f"n: {n}!", flush=True)
-    await asyncio.sleep(2)  # wait before continuing
+    sleep(5)
+    await asyncio.sleep(10)
 
 async def main():
     print("Run tasks and gather...", flush=True)

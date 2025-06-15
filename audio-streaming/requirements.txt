@@ -1,0 +1,5 @@
+# No external dependencies are required as the application uses standard library modules
+# This file is included for completeness and future extensibility
+
+# If you want to run the tests
+unittest

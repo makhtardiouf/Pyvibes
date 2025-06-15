@@ -4,7 +4,7 @@
  sub-segment that contains each of the given k words at least once. A segment is said to be
  shorter than other if it contains less number of words.
 
-[Uncomplete BUGGY Version!!]
+[Uncomplete BUGGY Version!]
 
 Makhtar Diouf
 $Id$

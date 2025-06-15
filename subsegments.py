@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Processing a Parag of Text
-[Uncomplete BUGGY Version!!]
+[Uncomplete BUGGY Version]
 
 Makhtar Diouf
 $Id$
