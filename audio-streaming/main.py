@@ -201,17 +201,14 @@ class AudioStreamer:
 
         logger.info(f"Starting FFmpeg streaming process")
         try:
-            # Close any existing process first
-            if self.current_process is not None:
-                self._terminate_process()
-
-            # Start new process
+            # Start new process with process group
             self.current_process = subprocess.Popen(
-                cmd, 
+                cmd,
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                universal_newlines=True
+                universal_newlines=True,
+                preexec_fn=os.setsid  # Create a new process group
             )
             return self.current_process
         except Exception as e:
@@ -292,16 +289,19 @@ class AudioStreamer:
             try:
                 # Check if process is still running
                 if self.current_process.poll() is None:
-                    # Process is still running, terminate it
-                    self.current_process.terminate()
-                    # Give it a moment to terminate gracefully
+                    # Process is still running, terminate the whole process group
                     try:
-                        self.current_process.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        # Force kill if it doesn't terminate gracefully
-                        logger.warning("FFmpeg process did not terminate gracefully, forcing kill")
-                        self.current_process.kill()
-                        self.current_process.wait()
+                        os.killpg(os.getpgid(self.current_process.pid), signal.SIGTERM)
+                        # Give it a moment to terminate gracefully
+                        try:
+                            self.current_process.wait(timeout=5)
+                        except subprocess.TimeoutExpired:
+                            logger.warning("FFmpeg process did not terminate gracefully, forcing kill")
+                            os.killpg(os.getpgid(self.current_process.pid), signal.SIGKILL)
+                            self.current_process.wait()
+                    except ProcessLookupError:
+                        # Process already dead
+                        pass
             except Exception as e:
                 logger.error(f"Error terminating FFmpeg process: {e}")
             finally:
